@@ -1,0 +1,27 @@
+:root {
+    /* Tokyo night Storm */
+    --background-color: #24283b;
+    --foreground-color: #c0caf5;
+    --primary-color: #7aa2f7;
+    --secondary-color: #bb9af7;
+    --success-color: #9ece6a;
+    --error-color: #f7768e;
+    --warning-color: #ff9e64;
+    --info-color: #7dcfff;
+
+    --font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --monospace-font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--foreground-color);
+}
+
+h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

@@ -213,3 +213,13 @@ table.browser-support .fa-times {
     display: block;
   }
 }
+
+.swipe {
+  margin: auto 0;
+  padding: 10px;
+}
+
+.swipe .fas {
+  color: var(--foreground-color);
+  font-size: 2em;
+}

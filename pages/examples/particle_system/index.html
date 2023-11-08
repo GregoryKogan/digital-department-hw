@@ -74,7 +74,7 @@ Particle.prototype.display = function() {
 
 // Is the particle still useful?
 Particle.prototype.isDead = function(){
-  return this.lifespan < 0;
+  return this.lifespan &lt 0;
 };
 
 let ParticleSystem = function(position) {

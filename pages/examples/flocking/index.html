@@ -42,7 +42,7 @@ function setup() {
 
   flock = new Flock();
   // Add an initial set of boids into the system
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i &lt 100; i++) {
     let b = new Boid(width / 2,height / 2);
     flock.addBoid(b);
   }
@@ -71,7 +71,7 @@ function Flock() {
 }
 
 Flock.prototype.run = function() {
-  for (let i = 0; i < this.boids.length; i++) {
+  for (let i = 0; i &lt this.boids.length; i++) {
     this.boids[i].run(this.boids);  // Passing the entire list of boids to each boid individually
   }
 }
@@ -165,8 +165,8 @@ Boid.prototype.render = function() {
 
 // Wraparound
 Boid.prototype.borders = function() {
-  if (this.position.x < -this.r)  this.position.x = width + this.r;
-  if (this.position.y < -this.r)  this.position.y = height + this.r;
+  if (this.position.x &lt -this.r)  this.position.x = width + this.r;
+  if (this.position.y &lt -this.r)  this.position.y = height + this.r;
   if (this.position.x > width + this.r) this.position.x = -this.r;
   if (this.position.y > height + this.r) this.position.y = -this.r;
 }
@@ -178,10 +178,10 @@ Boid.prototype.separate = function(boids) {
   let steer = createVector(0, 0);
   let count = 0;
   // For every boid in the system, check if it's too close
-  for (let i = 0; i < boids.length; i++) {
+  for (let i = 0; i &lt boids.length; i++) {
     let d = p5.Vector.dist(this.position,boids[i].position);
     // If the distance is greater than 0 and less than an arbitrary amount (0 when you are yourself)
-    if ((d > 0) && (d < desiredseparation)) {
+    if ((d > 0) && (d &lt desiredseparation)) {
       // Calculate vector pointing away from neighbor
       let diff = p5.Vector.sub(this.position, boids[i].position);
       diff.normalize();
@@ -212,9 +212,9 @@ Boid.prototype.align = function(boids) {
   let neighbordist = 50;
   let sum = createVector(0,0);
   let count = 0;
-  for (let i = 0; i < boids.length; i++) {
+  for (let i = 0; i &lt boids.length; i++) {
     let d = p5.Vector.dist(this.position,boids[i].position);
-    if ((d > 0) && (d < neighbordist)) {
+    if ((d > 0) && (d &lt neighbordist)) {
       sum.add(boids[i].velocity);
       count++;
     }
@@ -237,9 +237,9 @@ Boid.prototype.cohesion = function(boids) {
   let neighbordist = 50;
   let sum = createVector(0, 0);   // Start with empty vector to accumulate all locations
   let count = 0;
-  for (let i = 0; i < boids.length; i++) {
+  for (let i = 0; i &lt boids.length; i++) {
     let d = p5.Vector.dist(this.position,boids[i].position);
-    if ((d > 0) && (d < neighbordist)) {
+    if ((d > 0) && (d &lt neighbordist)) {
       sum.add(boids[i].position); // Add location
       count++;
     }

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../../css/style.css" />
+    <link rel="icon" href="../../../public/favicon.svg" />
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.8.0/lib/p5.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tokyo-night-dark.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
+    <script src="sketch.js"></script>
+    <title>Bubble Sort</title>
+  </head>
+  <body>
+    <h1 class="example-title">Bubble Sort</h1>
+    <h3 class="example-desc">
+      Sorts the randomly distributed bars according to their height in ascending
+      order while simulating the whole sorting process. Took references from
+      Coding Challenge by The Coding Train.
+    </h3>
+    <div id="sketch-wrapper"></div>
+    <a href="../../gallery.html" class="visit-examples">
+      <i class="fas fa-arrow-left"></i>
+      Go Back
+    </a>
+    <h2 class="example-src-title">Source code</h2>
+    <pre class="javascript src"><code>
+let values = [];
+let i = 0;
+let j = 0;
+
+// The statements in the setup() function
+// execute once when the program begins
+// The array is filled with random values in setup() function.
+function setup() {
+  createCanvas(720, 400);
+  for(let i = 0;i&ltwidth/8;i++){
+    values.push(random(height));
+  }
+}
+
+// The statements in draw() function are executed until the
+// program is stopped. Each statement is executed in
+// sequence and after the last line is read, the first
+// line is executed again.
+function draw() {
+  background(220);
+  bubbleSort();
+  simulateSorting();
+}
+
+// The bubbleSort() function sorts taking 8 elements of the array
+// per frame. The algorithm behind this function is 
+// bubble sort.
+function bubbleSort() {
+  for(let k = 0;k&lt8;k++){
+    if(i&ltvalues.length){
+      let temp = values[j];
+      if(values[j] > values[j+1]){
+        values[j] = values[j+1];
+        values[j+1] = temp;
+      }
+      j++;
+      
+      if(j>=values.length-i-1){
+        j = 0;
+        i++;
+      }
+    }
+    else{
+      noLoop();
+    }
+  }
+}
+
+// The simulateSorting() function helps in animating
+// the whole bubble sort algorithm
+// by drawing the rectangles using values
+// in the array as the length of the rectangle.
+function simulateSorting(){
+  for(let i = 0;i&ltvalues.length;i++){
+    stroke(100, 143, 143);
+      fill(50);
+      rect(i*8 , height, 8, -values[i],20);
+    }
+}
+    </code></pre>
+  </body>
+</html>

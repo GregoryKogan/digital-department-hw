@@ -55,7 +55,7 @@ body {
   padding: 10px;
   border-radius: var(--border-radius);
   background-color: var(--comments-color);
-  color: #fff;
+  color: var(--foreground-color);
   text-align: center;
   text-decoration: none;
   width: min(200px, 50%);

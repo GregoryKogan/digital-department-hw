@@ -1,9 +1,9 @@
 let flock;
 
 function setup() {
-  let canvas = createCanvas(640, 360);
+  const theDiv = document.getElementById("sketch-wrapper");
+  let canvas = createCanvas(min(640, theDiv.clientWidth), theDiv.clientHeight);
   canvas.parent("sketch-wrapper");
-  createP("Drag the mouse to generate new boids.");
 
   flock = new Flock();
   // Add an initial set of boids into the system

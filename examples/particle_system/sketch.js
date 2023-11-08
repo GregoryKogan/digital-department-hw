@@ -1,7 +1,8 @@
 let system;
 
 function setup() {
-  let canvas = createCanvas(720, 400);
+  const theDiv = document.getElementById("sketch-wrapper");
+  let canvas = createCanvas(min(640, theDiv.clientWidth), theDiv.clientHeight);
   canvas.parent("sketch-wrapper");
   system = new ParticleSystem(createVector(width / 2, 50));
 }

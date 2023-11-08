@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="icon" href="/public/robot.svg" />
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.8.0/lib/p5.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/tokyo-night-dark.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+      hljs.highlightAll();
+    </script>
+    <script src="sketch.js"></script>
+    <title>Particle System</title>
+  </head>
+  <body>
+    <h1 class="example-title">Particle System</h1>
+    <h3 class="example-desc">This is a basic Particle System</h3>
+    <div id="sketch-wrapper"></div>
+    <a href="/gallery.html" class="visit-examples">
+      <i class="fas fa-arrow-left"></i>
+      Go Back
+    </a>
+    <h2 class="example-src-title">Source code</h2>
+    <pre class="javascript src"><code>
+      let system;
+
+      function setup() {
+        createCanvas(720, 400);
+        system = new ParticleSystem(createVector(width / 2, 50));
+      }
+      
+      function draw() {
+        background(51);
+        system.addParticle();
+        system.run();
+      }
+      
+      // A simple Particle class
+      let Particle = function(position) {
+        this.acceleration = createVector(0, 0.05);
+        this.velocity = createVector(random(-1, 1), random(-1, 0));
+        this.position = position.copy();
+        this.lifespan = 255;
+      };
+      
+      Particle.prototype.run = function() {
+        this.update();
+        this.display();
+      };
+      
+      // Method to update position
+      Particle.prototype.update = function(){
+        this.velocity.add(this.acceleration);
+        this.position.add(this.velocity);
+        this.lifespan -= 2;
+      };
+      
+      // Method to display
+      Particle.prototype.display = function() {
+        stroke(200, this.lifespan);
+        strokeWeight(2);
+        fill(127, this.lifespan);
+        ellipse(this.position.x, this.position.y, 12, 12);
+      };
+      
+      // Is the particle still useful?
+      Particle.prototype.isDead = function(){
+        return this.lifespan < 0;
+      };
+      
+      let ParticleSystem = function(position) {
+        this.origin = position.copy();
+        this.particles = [];
+      };
+      
+      ParticleSystem.prototype.addParticle = function() {
+        this.particles.push(new Particle(this.origin));
+      };
+      
+      ParticleSystem.prototype.run = function() {
+        for (let i = this.particles.length-1; i >= 0; i--) {
+          let p = this.particles[i];
+          p.run();
+          if (p.isDead()) {
+            this.particles.splice(i, 1);
+          }
+        }
+      };
+      
+    </code></pre>
+  </body>
+</html>

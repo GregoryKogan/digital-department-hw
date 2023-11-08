@@ -1,6 +1,7 @@
 :root {
   /* Tokyo night Storm */
   --background-color: #24283b;
+  --background-color-dark: #1a1b26;
   --comments-color: #565f89;
   --foreground-color: #c0caf5;
   --primary-color: #7aa2f7;
@@ -19,7 +20,7 @@
 
 body {
   margin: 0;
-  padding: 0;
+  padding: 1em;
   font-family: var(--font-family);
   background-color: var(--background-color);
   color: var(--foreground-color);
@@ -145,4 +146,70 @@ body {
 .hljs {
   background: var(--background-color) !important;
   font-family: var(--monospace-font-family);
+}
+
+ul.list {
+  list-style-type: none;
+  padding: 0 2em;
+}
+
+ul.list li {
+  margin-bottom: 10px;
+}
+
+ul.list li a {
+  color: var(--info-color);
+  text-decoration: none;
+}
+
+ul.list li a:hover {
+  color: var(--secondary-color);
+}
+
+ul.list li a i {
+  margin-right: 5px;
+}
+
+table.browser-support {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table.browser-support th,
+table.browser-support td {
+  border: 1px solid var(--foreground-color);
+  padding: 8px;
+  text-align: center;
+}
+
+table.browser-support th {
+  background-color: var(--comments-color);
+  color: var(--foreground-color);
+}
+
+table.browser-support tr:nth-child(even) {
+  background-color: var(--background-color-dark);
+}
+
+table.browser-support tr:hover {
+  background-color: var(--comments-color);
+}
+
+table.browser-support .fa-check {
+  color: var(--success-color);
+}
+
+table.browser-support .fa-times {
+  color: var(--error-color);
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+@media screen and (max-width: 600px) {
+  table.browser-support {
+    width: 100%;
+    display: block;
+  }
 }

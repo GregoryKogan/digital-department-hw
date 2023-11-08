@@ -39,7 +39,7 @@ body {
 
 .walk-through-title {
   text-align: center;
-  color: var(--secondary-color);
+  color: var(--warning-color);
 }
 
 .description {
